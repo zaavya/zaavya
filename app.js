@@ -22,12 +22,14 @@ let server = http.createServer(function (req, res) {
     res.setHeader('Cache-Control', 'no-cache, no-store');
     res.end(JSON.stringify(sysInfo[url.slice(6)]()));
   } else {
-    fs.readFile('./static' + url, function (err, data) {
+    fs.readFile('./dist' + url, function (err, data) {
       if (err) {
         res.writeHead(404);
         res.end('Not found');
       } else {
         let ext = path.extname(url).slice(1);
+        console.log('url', url);
+        console.log('ext ---------', ext);
         res.setHeader('Content-Type', contentTypes[ext]);
         if (ext === 'html') {
           res.setHeader('Cache-Control', 'no-cache, no-store');
