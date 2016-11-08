@@ -41,4 +41,5 @@ let server = http.createServer(function (req, res) {
 let PORT = env.NODE_PORT || 3000, env.NODE_IP || 'localhost';
 server.listen(PORT, function () {
   console.log(`Application worker ${process.pid} started...`);
+  console.log('Server on Port', PORT);
 });
