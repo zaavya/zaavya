@@ -28,8 +28,6 @@ let server = http.createServer(function (req, res) {
         res.end('Not found');
       } else {
         let ext = path.extname(url).slice(1);
-        console.log('url', url);
-        console.log('ext ---------', ext);
         res.setHeader('Content-Type', contentTypes[ext]);
         if (ext === 'html') {
           res.setHeader('Cache-Control', 'no-cache, no-store');
@@ -40,6 +38,7 @@ let server = http.createServer(function (req, res) {
   }
 });
 
-server.listen(env.NODE_PORT || 3000, env.NODE_IP || 'localhost', function () {
+let PORT = env.NODE_PORT || 3000, env.NODE_IP || 'localhost';
+server.listen(PORT, function () {
   console.log(`Application worker ${process.pid} started...`);
 });
